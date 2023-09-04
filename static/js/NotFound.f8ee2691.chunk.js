@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunki_market=self.webpackChunki_market||[]).push([[187],{9651:function(n,t,e){e.r(t),e.d(t,{default:function(){return o}});e(2791);var r="NotFoundBlock_root__FxcIK",u=e(184),c=function(){return(0,u.jsx)(u.Fragment,{children:(0,u.jsx)("h1",{className:r,children:"Not found :( "})})},o=function(){return(0,u.jsx)(c,{})}}}]);
+//# sourceMappingURL=NotFound.f8ee2691.chunk.js.map
