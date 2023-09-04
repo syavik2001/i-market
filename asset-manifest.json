@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/syavik2001/i-market-food.git/static/css/main.a95da5b5.css",
-    "main.js": "/syavik2001/i-market-food.git/static/js/main.e891f80e.js",
-    "Cart.js": "/syavik2001/i-market-food.git/static/js/Cart.d1ec443f.chunk.js",
-    "FullPizza.js": "/syavik2001/i-market-food.git/static/js/FullPizza.63a2dcdb.chunk.js",
-    "NotFound.css": "/syavik2001/i-market-food.git/static/css/NotFound.4781e98b.chunk.css",
-    "NotFound.js": "/syavik2001/i-market-food.git/static/js/NotFound.f8ee2691.chunk.js",
-    "static/media/empty-cart.png": "/syavik2001/i-market-food.git/static/media/empty-cart.db905d1f4b063162f25b.png",
-    "static/media/pizza-logo.svg": "/syavik2001/i-market-food.git/static/media/pizza-logo.56ac87032d8f6fdf863326acd06c0d97.svg",
-    "index.html": "/syavik2001/i-market-food.git/index.html",
-    "main.a95da5b5.css.map": "/syavik2001/i-market-food.git/static/css/main.a95da5b5.css.map",
-    "main.e891f80e.js.map": "/syavik2001/i-market-food.git/static/js/main.e891f80e.js.map",
-    "Cart.d1ec443f.chunk.js.map": "/syavik2001/i-market-food.git/static/js/Cart.d1ec443f.chunk.js.map",
-    "FullPizza.63a2dcdb.chunk.js.map": "/syavik2001/i-market-food.git/static/js/FullPizza.63a2dcdb.chunk.js.map",
-    "NotFound.4781e98b.chunk.css.map": "/syavik2001/i-market-food.git/static/css/NotFound.4781e98b.chunk.css.map",
-    "NotFound.f8ee2691.chunk.js.map": "/syavik2001/i-market-food.git/static/js/NotFound.f8ee2691.chunk.js.map"
+    "main.css": "/i-market/static/css/main.a95da5b5.css",
+    "main.js": "/i-market/static/js/main.7bef121a.js",
+    "Cart.js": "/i-market/static/js/Cart.d1ec443f.chunk.js",
+    "FullPizza.js": "/i-market/static/js/FullPizza.63a2dcdb.chunk.js",
+    "NotFound.css": "/i-market/static/css/NotFound.4781e98b.chunk.css",
+    "NotFound.js": "/i-market/static/js/NotFound.f8ee2691.chunk.js",
+    "static/media/empty-cart.png": "/i-market/static/media/empty-cart.db905d1f4b063162f25b.png",
+    "static/media/pizza-logo.svg": "/i-market/static/media/pizza-logo.56ac87032d8f6fdf863326acd06c0d97.svg",
+    "index.html": "/i-market/index.html",
+    "main.a95da5b5.css.map": "/i-market/static/css/main.a95da5b5.css.map",
+    "main.7bef121a.js.map": "/i-market/static/js/main.7bef121a.js.map",
+    "Cart.d1ec443f.chunk.js.map": "/i-market/static/js/Cart.d1ec443f.chunk.js.map",
+    "FullPizza.63a2dcdb.chunk.js.map": "/i-market/static/js/FullPizza.63a2dcdb.chunk.js.map",
+    "NotFound.4781e98b.chunk.css.map": "/i-market/static/css/NotFound.4781e98b.chunk.css.map",
+    "NotFound.f8ee2691.chunk.js.map": "/i-market/static/js/NotFound.f8ee2691.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a95da5b5.css",
-    "static/js/main.e891f80e.js"
+    "static/js/main.7bef121a.js"
   ]
 }
