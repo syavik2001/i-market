@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/i-market/static/css/main.a95da5b5.css",
-    "main.js": "/i-market/static/js/main.1c78cf36.js",
+    "main.js": "/i-market/static/js/main.eb807694.js",
     "Cart.js": "/i-market/static/js/Cart.d1ec443f.chunk.js",
     "FullPizza.js": "/i-market/static/js/FullPizza.63a2dcdb.chunk.js",
     "NotFound.css": "/i-market/static/css/NotFound.4781e98b.chunk.css",
@@ -10,7 +10,7 @@
     "static/media/pizza-logo.svg": "/i-market/static/media/pizza-logo.56ac87032d8f6fdf863326acd06c0d97.svg",
     "index.html": "/i-market/index.html",
     "main.a95da5b5.css.map": "/i-market/static/css/main.a95da5b5.css.map",
-    "main.1c78cf36.js.map": "/i-market/static/js/main.1c78cf36.js.map",
+    "main.eb807694.js.map": "/i-market/static/js/main.eb807694.js.map",
     "Cart.d1ec443f.chunk.js.map": "/i-market/static/js/Cart.d1ec443f.chunk.js.map",
     "FullPizza.63a2dcdb.chunk.js.map": "/i-market/static/js/FullPizza.63a2dcdb.chunk.js.map",
     "NotFound.4781e98b.chunk.css.map": "/i-market/static/css/NotFound.4781e98b.chunk.css.map",
@@ -18,6 +18,6 @@
   },
   "entrypoints": [
     "static/css/main.a95da5b5.css",
-    "static/js/main.1c78cf36.js"
+    "static/js/main.eb807694.js"
   ]
 }
