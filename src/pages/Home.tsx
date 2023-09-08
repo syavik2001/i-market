@@ -56,7 +56,7 @@ const Home: React.FC = () => {
 				currentPage,
 			};
 			const queryString = qs.stringify(params, {skipNulls: true});
-			navigate(`/?${queryString}`);
+			navigate(`/i-market/?${queryString}`);
 		}
 
 		// 15.07

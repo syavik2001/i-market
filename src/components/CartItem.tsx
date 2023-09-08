@@ -17,7 +17,7 @@ const CartItemBlock: React.FC<CartItemProps> = ({id, title, price, count, size, 
 	const dispatch = useDispatch();
 
 	const onClickPlus = () => {
-		dispatch(addItem({id} as CartItem));
+		dispatch(addItem({id, size, type} as CartItem));
 	};
 
 	const onClickMinus = () => {
@@ -70,7 +70,7 @@ const CartItemBlock: React.FC<CartItemProps> = ({id, title, price, count, size, 
 				</button>
 			</div>
 			<div className="cart__item-price">
-				<b>{price * count} uah</b>
+				<b>{price * count} грн</b>
 			</div>
 			<div onClick={onClickRemove} className="cart__item-remove">
 				<div className="button button--outline button--circle">

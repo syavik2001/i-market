@@ -22,7 +22,7 @@ function Header() {
 	return (
 		<div className="header">
 			<div className="container">
-				<Link to="/">
+				<Link to="/i-market/">
 					<div className="header__logo">
 						<img width="38" src={logoSvg} alt="Pizza logo" />
 						<div>
@@ -31,10 +31,10 @@ function Header() {
 						</div>
 					</div>
 				</Link>
-				{location.pathname !== '/cart' && <Search />}
+				{location.pathname !== '/i-market/cart' && <Search />}
 				<div className="header__cart">
-					{location.pathname !== '/cart' && (
-						<Link to="/cart" className="button button--cart">
+					{location.pathname !== '/i-market/cart' && (
+						<Link to="/i-market/cart" className="button button--cart">
 							<span>{totalPrice} uah</span>
 							<div className="button__delimiter"></div>
 							<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">

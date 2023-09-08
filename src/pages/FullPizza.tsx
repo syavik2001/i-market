@@ -5,7 +5,7 @@ import pizzaSlice from '../redux/slices/pizzaSlice';
 
 const FullPizza = () => {
 	const [pizza, setPizza] = useState<{
-		image: string;
+		imageUrl: string;
 		title: string;
 		price: number;
 	}>();
@@ -19,7 +19,7 @@ const FullPizza = () => {
 				setPizza(data);
 			} catch (error) {
 				alert('Error getting food :(');
-				navigate('/');
+				navigate('/i-market/');
 			}
 		}
 		fetchPizza();
@@ -31,7 +31,7 @@ const FullPizza = () => {
 
 	return (
 		<div className="container">
-			<img src={pizza.image} />
+			<img src={pizza.imageUrl} />
 			<h2>{pizza.title}</h2>
 			<p> Hello Text......</p>
 			<h4>{pizza.price} hrn</h4>

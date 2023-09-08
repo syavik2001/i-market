@@ -2,7 +2,7 @@
 	"name": "i-market",
 	"version": "0.1.0",
 	"private": true,
-	"homepage": "https://syavik2001.github.io/",
+	"homepage": "https://syavik2001.github.io/i-market/",
 	"dependencies": {
 		"@reduxjs/toolkit": "^1.9.5",
 		"@testing-library/jest-dom": "^5.16.5",
@@ -55,5 +55,8 @@
 			"last 1 firefox version",
 			"last 1 safari version"
 		]
+	},
+	"devDependencies": {
+		"@types/qs": "^6.9.8"
 	}
 }
