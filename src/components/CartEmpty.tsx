@@ -1,22 +1,22 @@
-import React from 'react';
-import cartEmptyImg from '../assets/img/empty-cart.png';
-import {Link} from 'react-router-dom';
+import React from "react";
+import cartEmptyImg from "../assets/img/empty-cart.png";
+import {Link} from "react-router-dom";
 
 const CartEmpty = () => {
 	return (
 		<>
 			<div className="cart cart--empty">
 				<h2>
-					Корзина пустая <span>😕</span>
+					Кошик порожній <span>😕</span>
 				</h2>
 				<p>
-					Вероятней всего, вы не заказывали ещё пиццу.
+					Скоріш за все, ви ще не замовили піцу.
 					<br />
-					Для того, чтобы заказать пиццу, перейди на главную страницу.
+					Для того, щоб замовити піцу, перейдіть на головну сторінку.
 				</p>
 				<img src={cartEmptyImg} alt="Empty cart" />
 				<Link to="/i-market/" className="button button--black">
-					<span>Вернуться назад</span>
+					<span>Повернутися назад</span>
 				</Link>
 			</div>
 		</>

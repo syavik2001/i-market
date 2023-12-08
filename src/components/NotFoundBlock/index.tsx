@@ -1,13 +1,13 @@
-import React from 'react'
+import React from "react";
 
-import styles from './NotFoundBlock.module.scss'
+import styles from "./NotFoundBlock.module.scss";
 
 const NotFoundBlock = () => {
-  return (
-    <>
-      <h1 className={styles.root}>Not found :( </h1>
-    </>
-  )
-}
+	return (
+		<>
+			<h1 className={styles.root}>Сторінку не знайдено :( </h1>
+		</>
+	);
+};
 
 export default NotFoundBlock;

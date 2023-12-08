@@ -1,16 +1,16 @@
-import React, {useContext, useState, useEffect, useRef, useCallback} from 'react';
-import qs from 'qs';
-import {useNavigate} from 'react-router-dom';
-import {useSelector, useDispatch} from 'react-redux';
-import {setCategoryId, setCurrentPage, setFilters} from '../redux/slices/filterSlice';
+import React, {useContext, useState, useEffect, useRef, useCallback} from "react";
+import qs from "qs";
+import {useNavigate} from "react-router-dom";
+import {useSelector, useDispatch} from "react-redux";
+import {setCategoryId, setCurrentPage, setFilters} from "../redux/slices/filterSlice";
 
-import Categories from '../components/Categories';
-import Sort, {sortList} from '../components/Sort';
-import PizzaBlock from '../components/PizzaBlock';
-import Skeleton from '../components/PizzaBlock/Skeleton';
-import Pagination from '../components/Pagination';
-import {fetchPizzas, SearchPizzaParams} from '../redux/slices/pizzaSlice';
-import {RootState, useAppDispatch} from '../redux/store';
+import Categories from "../components/Categories";
+import Sort, {sortList} from "../components/Sort";
+import PizzaBlock from "../components/PizzaBlock";
+import Skeleton from "../components/PizzaBlock/Skeleton";
+import Pagination from "../components/Pagination";
+import {fetchPizzas, SearchPizzaParams} from "../redux/slices/pizzaSlice";
+import {RootState, useAppDispatch} from "../redux/store";
 
 const Home: React.FC = () => {
 	const dispatch = useAppDispatch();
@@ -31,10 +31,10 @@ const Home: React.FC = () => {
 	};
 
 	const getPizzas = async () => {
-		const order = sort.includes('-') ? 'asc' : 'desc';
-		const sortBy = sort.replace('-', '');
-		const category = categoryId > 0 ? `category=${categoryId}` : '';
-		const search = searchValue ? `title=${searchValue}` : '';
+		const order = sort.includes("-") ? "asc" : "desc";
+		const sortBy = sort.replace("-", "");
+		const category = categoryId > 0 ? `category=${categoryId}` : "";
+		const search = searchValue ? `title=${searchValue}` : "";
 
 		dispatch(
 			fetchPizzas({
@@ -43,7 +43,7 @@ const Home: React.FC = () => {
 				category,
 				search,
 				currentPage: String(currentPage),
-			})
+			}),
 		);
 		window.scrollTo(0, 0);
 	};
@@ -85,7 +85,7 @@ const Home: React.FC = () => {
 					categoryId: Number(params.category),
 					currentPage: Number(params.currentPage),
 					sort: sort || sortList[0],
-				})
+				}),
 			);
 		}
 		isMounted.current = true;
@@ -130,16 +130,16 @@ const Home: React.FC = () => {
 					<Categories value={categoryId} onChangeCategory={onChangeCategory} />
 					<Sort value={sort} />
 				</div>
-				<h2 className="content__title">Все пиццы</h2>
-				{status === 'error' ? (
+				<h2 className="content__title">Всі піци</h2>
+				{status === "error" ? (
 					<div className="content__error-info">
-						<h2>Error</h2>
-						<p>Can't getting goods. Try later.</p>
+						<h2>Помилка</h2>
+						<p>Неможливо відобразити товари. Спробуйте пізніше.</p>
 					</div>
 				) : (
-					<div className="content__items">{status === 'loading' ? skeletons : pizzas}</div>
+					<div className="content__items">{status === "loading" ? skeletons : pizzas}</div>
 				)}
-				{status === 'success' ? <Pagination currentPage={currentPage} onChangePage={onChangePage} /> : null}
+				{status === "success" ? <Pagination currentPage={currentPage} onChangePage={onChangePage} /> : null}
 			</div>
 		</>
 	);

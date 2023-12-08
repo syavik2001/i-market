@@ -1,8 +1,8 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
-import {Sort, SortPropertyEnum, setSort} from '../redux/slices/filterSlice';
-import {type} from 'os';
-import {RootState} from '../redux/store';
+import React, {useEffect, useRef, useState} from "react";
+import {useSelector, useDispatch} from "react-redux";
+import {Sort, SortPropertyEnum, setSort} from "../redux/slices/filterSlice";
+import {type} from "os";
+import {RootState} from "../redux/store";
 
 type SortItem = {
 	name: string;
@@ -18,11 +18,11 @@ type SortPopupProps = {
 };
 
 export const sortList: SortItem[] = [
-	{name: 'популярности (DESC)', sortProperty: SortPropertyEnum.RATING_DESC},
-	{name: 'популярности (ASC)', sortProperty: SortPropertyEnum.RATING_ASC},
-	{name: 'цене (DESC)', sortProperty: SortPropertyEnum.PRICE_DESC},
-	{name: 'цене (ASC)', sortProperty: SortPropertyEnum.PRICE_ASC},
-	{name: 'алфавиту', sortProperty: SortPropertyEnum.TITLE_ASC},
+	{name: "популярністю (DESC)", sortProperty: SortPropertyEnum.RATING_DESC},
+	{name: "популярністю (ASC)", sortProperty: SortPropertyEnum.RATING_ASC},
+	{name: "за зменшенням ціни (DESC)", sortProperty: SortPropertyEnum.PRICE_DESC},
+	{name: "за збільшенням ціни (ASC)", sortProperty: SortPropertyEnum.PRICE_ASC},
+	{name: "найменуванням", sortProperty: SortPropertyEnum.TITLE_ASC},
 ];
 
 const SortPopup: React.FC<SortPopupProps> = React.memo(({value}) => {
@@ -43,10 +43,10 @@ const SortPopup: React.FC<SortPopupProps> = React.memo(({value}) => {
 				setIsVisible(false);
 			}
 		};
-		document.body.addEventListener('click', handleClickOutside);
+		document.body.addEventListener("click", handleClickOutside);
 
 		return () => {
-			document.body.removeEventListener('click', handleClickOutside);
+			document.body.removeEventListener("click", handleClickOutside);
 		};
 	}, []);
 
@@ -59,7 +59,7 @@ const SortPopup: React.FC<SortPopupProps> = React.memo(({value}) => {
 						fill="#2C2C2C"
 					/>
 				</svg>
-				<b>Сортировка по:</b>
+				<b>Сортування за:</b>
 				<span onClick={() => setIsVisible(!isVisible)}>{sort.name}</span>
 			</div>
 			{isVisible && (
@@ -69,8 +69,8 @@ const SortPopup: React.FC<SortPopupProps> = React.memo(({value}) => {
 							<li
 								key={i}
 								onClick={() => onClickListItem(obj)}
-								className={value === obj.sortProperty ? 'active' : ''}>
-								{obj.name}{' '}
+								className={value === obj.sortProperty ? "active" : ""}>
+								{obj.name}{" "}
 							</li>
 						))}
 					</ul>

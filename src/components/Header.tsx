@@ -1,9 +1,9 @@
-import logoSvg from '../assets/img/pizza-logo.svg';
-import {Link, useLocation} from 'react-router-dom';
-import Search from './Search';
-import {useSelector} from 'react-redux';
-import {RootState} from '../redux/store';
-import {useEffect, useRef} from 'react';
+import logoSvg from "../assets/img/pizza-logo.svg";
+import {Link, useLocation} from "react-router-dom";
+import Search from "./Search";
+import {useSelector} from "react-redux";
+import {RootState} from "../redux/store";
+import {useEffect, useRef} from "react";
 
 function Header() {
 	const {items, totalPrice} = useSelector((state: RootState) => state.cart);
@@ -14,7 +14,7 @@ function Header() {
 	useEffect(() => {
 		if (isMounted.current) {
 			const json = JSON.stringify(items);
-			localStorage.setItem('cart', json);
+			localStorage.setItem("cart", json);
 		}
 		isMounted.current = true;
 	}, [items]);
@@ -26,16 +26,16 @@ function Header() {
 					<div className="header__logo">
 						<img width="38" src={logoSvg} alt="Pizza logo" />
 						<div>
-							<h1>React Pizza</h1>
-							<p>самая вкусная пицца во вселенной</p>
+							<h1>Реактивна Піца</h1>
+							<p>найсмачніша піца в світі</p>
 						</div>
 					</div>
 				</Link>
-				{location.pathname !== '/i-market/cart' && <Search />}
+				{location.pathname !== "/i-market/cart" && <Search />}
 				<div className="header__cart">
-					{location.pathname !== '/i-market/cart' && (
+					{location.pathname !== "/i-market/cart" && (
 						<Link to="/i-market/cart" className="button button--cart">
-							<span>{totalPrice} uah</span>
+							<span>{totalPrice} грн</span>
 							<div className="button__delimiter"></div>
 							<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path

@@ -1,19 +1,19 @@
-import React, {useState, useEffect, createContext} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
+import React, {useState, useEffect, createContext} from "react";
+import {useSelector, useDispatch} from "react-redux";
 
-import './scss/app.scss';
+import "./scss/app.scss";
 
-import {BrowserRouter as Router, Route, Link, Routes, BrowserRouter} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Link, Routes, BrowserRouter} from "react-router-dom";
 
-import Header from './components/Header';
-import Home from './pages/Home';
+import Header from "./components/Header";
+import Home from "./pages/Home";
 //import NotFound from './pages/NotFound';
 //import Cart from "./pages/Cart";
 //import FullPizza from './pages/FullPizza';
 
-const Cart = React.lazy(() => import(/* webpackChunkName: "Cart" */ './pages/Cart'));
-const FullPizza = React.lazy(() => import(/* webpackChunkName: "FullPizza" */ './pages/FullPizza'));
-const NotFound = React.lazy(() => import(/* webpackChunkName: "NotFound" */ './pages/NotFound'));
+const Cart = React.lazy(() => import(/* webpackChunkName: "Cart" */ "./pages/Cart"));
+const FullPizza = React.lazy(() => import(/* webpackChunkName: "FullPizza" */ "./pages/FullPizza"));
+const NotFound = React.lazy(() => import(/* webpackChunkName: "NotFound" */ "./pages/NotFound"));
 
 //export const SearchContext = createContext();
 
@@ -30,7 +30,7 @@ function App() {
 					<Route
 						path="/i-market/cart/"
 						element={
-							<React.Suspense fallback={<div>Cart is loading...</div>}>
+							<React.Suspense fallback={<div>Кошик завантажується...</div>}>
 								<Cart />
 							</React.Suspense>
 						}
@@ -38,7 +38,7 @@ function App() {
 					<Route
 						path="/i-market/pizza/:id"
 						element={
-							<React.Suspense fallback={<div>Is loading...</div>}>
+							<React.Suspense fallback={<div>Завантаження...</div>}>
 								<FullPizza />
 							</React.Suspense>
 						}
@@ -46,7 +46,7 @@ function App() {
 					<Route
 						path="/i-market/*"
 						element={
-							<React.Suspense fallback={<div>Is loading...</div>}>
+							<React.Suspense fallback={<div>Завантаження...</div>}>
 								<NotFound />
 							</React.Suspense>
 						}
