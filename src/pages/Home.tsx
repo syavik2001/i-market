@@ -115,7 +115,9 @@ const Home: React.FC = () => {
 				price={obj.price}
 				image={obj.imageUrl}
 				sizes={obj.sizes}
+				activeSize={obj.activeSize}
 				types={obj.types}
+				activeType={obj.activeType}
 				rating={obj.rating}
 			/>
 		));
@@ -137,7 +139,7 @@ const Home: React.FC = () => {
 				) : (
 					<div className="content__items">{status === 'loading' ? skeletons : pizzas}</div>
 				)}
-				<Pagination currentPage={currentPage} onChangePage={onChangePage} />
+				{status === 'success' ? <Pagination currentPage={currentPage} onChangePage={onChangePage} /> : null}
 			</div>
 		</>
 	);

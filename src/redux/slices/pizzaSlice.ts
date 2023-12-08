@@ -2,6 +2,7 @@ import {createSlice, createAsyncThunk, PayloadAction} from '@reduxjs/toolkit';
 import axios from 'axios';
 import {CartItem} from './cartSlice';
 import {Sort} from './filterSlice';
+import {calcPrice} from '../../utils/calcPrice';
 
 export type SearchPizzaParams = {
 	order: string;
@@ -27,9 +28,12 @@ interface Pizza {
 	title: string;
 	//category: number;
 	price: number;
+	originalPrice: number;
 	sizes: number[];
+	activeSize: number;
 	image: string;
 	types: number[];
+	activeType: number;
 	rating: number;
 }
 
@@ -56,6 +60,22 @@ const pizzaSlice = createSlice({
 		setItems(state, action: PayloadAction<Pizza[]>) {
 			state.items = action.payload;
 		},
+		setItemType(state, action: PayloadAction<{id: string; itemType: number}>) {
+			const {id, itemType} = action.payload;
+			const pizza = state.items.find((pizza) => pizza.id === id);
+			if (pizza) {
+				pizza.activeType = itemType;
+				pizza.price = calcPrice(pizza.activeType, pizza.activeSize, pizza.sizes[0], pizza.originalPrice);
+			}
+		},
+		setItemSize(state, action: PayloadAction<{id: string; itemSize: number}>) {
+			const {id, itemSize} = action.payload;
+			const pizza = state.items.find((pizza) => pizza.id === id);
+			if (pizza) {
+				pizza.activeSize = itemSize;
+				pizza.price = calcPrice(pizza.activeType, pizza.activeSize, pizza.sizes[0], pizza.originalPrice);
+			}
+		},
 	},
 	extraReducers: (builder) => {
 		builder
@@ -64,7 +84,12 @@ const pizzaSlice = createSlice({
 				state.items = [];
 			})
 			.addCase(fetchPizzas.fulfilled, (state, action) => {
-				state.items = action.payload;
+				state.items = action.payload.map((pizza) => ({
+					...pizza,
+					originalPrice: pizza.price,
+					activeSize: pizza.sizes[0],
+					activeType: 0,
+				}));
 				state.status = Status.SUCCESS;
 			})
 			.addCase(fetchPizzas.rejected, (state) => {
@@ -74,6 +99,6 @@ const pizzaSlice = createSlice({
 	},
 });
 
-export const {setItems} = pizzaSlice.actions;
+export const {setItems, setItemType, setItemSize} = pizzaSlice.actions;
 
 export default pizzaSlice.reducer;
