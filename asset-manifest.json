@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/i-market/static/css/main.a95da5b5.css",
-    "main.js": "/i-market/static/js/main.fdaafbe0.js",
-    "Cart.js": "/i-market/static/js/Cart.f6390a36.chunk.js",
-    "FullPizza.js": "/i-market/static/js/FullPizza.9388971b.chunk.js",
+    "main.css": "/i-market/static/css/main.0c37d93f.css",
+    "main.js": "/i-market/static/js/main.62cdbc35.js",
+    "Cart.js": "/i-market/static/js/Cart.29d12e47.chunk.js",
+    "FullPizza.js": "/i-market/static/js/FullPizza.e4b4c807.chunk.js",
     "NotFound.css": "/i-market/static/css/NotFound.4781e98b.chunk.css",
-    "NotFound.js": "/i-market/static/js/NotFound.f8ee2691.chunk.js",
+    "NotFound.js": "/i-market/static/js/NotFound.5c6e2f2a.chunk.js",
     "static/media/empty-cart.png": "/i-market/static/media/empty-cart.db905d1f4b063162f25b.png",
     "static/media/pizza-logo.svg": "/i-market/static/media/pizza-logo.56ac87032d8f6fdf863326acd06c0d97.svg",
     "index.html": "/i-market/index.html",
-    "main.a95da5b5.css.map": "/i-market/static/css/main.a95da5b5.css.map",
-    "main.fdaafbe0.js.map": "/i-market/static/js/main.fdaafbe0.js.map",
-    "Cart.f6390a36.chunk.js.map": "/i-market/static/js/Cart.f6390a36.chunk.js.map",
-    "FullPizza.9388971b.chunk.js.map": "/i-market/static/js/FullPizza.9388971b.chunk.js.map",
+    "main.0c37d93f.css.map": "/i-market/static/css/main.0c37d93f.css.map",
+    "main.62cdbc35.js.map": "/i-market/static/js/main.62cdbc35.js.map",
+    "Cart.29d12e47.chunk.js.map": "/i-market/static/js/Cart.29d12e47.chunk.js.map",
+    "FullPizza.e4b4c807.chunk.js.map": "/i-market/static/js/FullPizza.e4b4c807.chunk.js.map",
     "NotFound.4781e98b.chunk.css.map": "/i-market/static/css/NotFound.4781e98b.chunk.css.map",
-    "NotFound.f8ee2691.chunk.js.map": "/i-market/static/js/NotFound.f8ee2691.chunk.js.map"
+    "NotFound.5c6e2f2a.chunk.js.map": "/i-market/static/js/NotFound.5c6e2f2a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a95da5b5.css",
-    "static/js/main.fdaafbe0.js"
+    "static/css/main.0c37d93f.css",
+    "static/js/main.62cdbc35.js"
   ]
 }
