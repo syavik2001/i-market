@@ -10,6 +10,7 @@ import Home from "./pages/Home";
 //import NotFound from './pages/NotFound';
 //import Cart from "./pages/Cart";
 //import FullPizza from './pages/FullPizza';
+import {useTranslation} from "react-i18next";
 
 const Cart = React.lazy(() => import(/* webpackChunkName: "Cart" */ "./pages/Cart"));
 const FullPizza = React.lazy(() => import(/* webpackChunkName: "FullPizza" */ "./pages/FullPizza"));
@@ -20,7 +21,7 @@ const NotFound = React.lazy(() => import(/* webpackChunkName: "NotFound" */ "./p
 function App() {
 	//const filter = useSelector((state) => state.filter.value);
 	//const dispatch = useDispatch()
-
+	const {t, i18n} = useTranslation();
 	return (
 		<div className="wrapper">
 			<Header />

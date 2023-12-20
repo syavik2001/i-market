@@ -2,6 +2,7 @@ import axios from "axios";
 import React, {useEffect, useState} from "react";
 import {useNavigate, useParams} from "react-router-dom";
 import pizzaSlice from "../redux/slices/pizzaSlice";
+import {useTranslation} from "react-i18next";
 
 const FullPizza = () => {
 	const [pizza, setPizza] = useState<{
@@ -11,6 +12,7 @@ const FullPizza = () => {
 	}>();
 	const {id} = useParams();
 	const navigate = useNavigate();
+	const {t} = useTranslation();
 
 	useEffect(() => {
 		async function fetchPizza() {
@@ -26,15 +28,17 @@ const FullPizza = () => {
 	}, []);
 
 	if (!pizza) {
-		return <>'Завантаження...'</>;
+		return <>'Loading...'</>;
 	}
 
 	return (
 		<div className="container">
 			<img src={pizza.imageUrl} />
-			<h2>{pizza.title}</h2>
+			<h2>{t(pizza.title)}</h2>
 			<p> Тут повинен бути опис......</p>
-			<h4>{pizza.price} грн</h4>
+			<h4>
+				{pizza.price} {t("uah")}
+			</h4>
 		</div>
 	);
 };

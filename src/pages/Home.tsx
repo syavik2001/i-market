@@ -3,7 +3,7 @@ import qs from "qs";
 import {useNavigate} from "react-router-dom";
 import {useSelector, useDispatch} from "react-redux";
 import {setCategoryId, setCurrentPage, setFilters} from "../redux/slices/filterSlice";
-
+import {useTranslation} from "react-i18next";
 import Categories from "../components/Categories";
 import Sort, {sortList} from "../components/Sort";
 import PizzaBlock from "../components/PizzaBlock";
@@ -21,6 +21,7 @@ const Home: React.FC = () => {
 	const currentPage = useSelector((state: RootState) => state.filter.currentPage);
 	const searchValue = useSelector((state: RootState) => state.filter.searchValue);
 	const {items, status} = useSelector((state: RootState) => state.pizza);
+	const {t} = useTranslation();
 
 	const onChangeCategory = useCallback((idx: number) => {
 		dispatch(setCategoryId(idx));
@@ -68,11 +69,12 @@ const Home: React.FC = () => {
 		//		categoryId: Number(params.category),
 		//		currentPage: Number(params.currentPage),
 		//		sort: sortObj || sortList[0],
-		//	})
+		//	}),
 		//);
+		// 15.07
 
 		getPizzas();
-		//isMounted.current = true;
+		isMounted.current = true;
 	}, [categoryId, sort, searchValue, currentPage]);
 
 	useEffect(() => {
@@ -99,29 +101,22 @@ const Home: React.FC = () => {
 	//    setIsLoading(false)
 	//  }); -----Получение данных с бэка через Фетч
 
-	const pizzas = items
-		//.filter(obj => {
-		//  if (obj.title.toLowerCase().includes(searchValue.toLowerCase())) {
-		//    return true;
-		//  }
-		//  return false;
-		//}) Фильтрация статических пиц!!!(не обращаясь к бэку)
-		.map((obj: any) => (
-			<PizzaBlock
-				key={obj.id}
-				id={obj.id}
-				category={obj.category}
-				title={obj.title}
-				price={obj.price}
-				image={obj.imageUrl}
-				sizes={obj.sizes}
-				activeSize={obj.activeSize}
-				types={obj.types}
-				activeType={obj.activeType}
-				rating={obj.rating}
-			/>
-		));
-	const skeletons = [...new Array(8)].map((_, index) => <Skeleton key={index} />);
+	const pizzas = items.map((obj: any) => (
+		<PizzaBlock
+			key={obj.id}
+			id={obj.id}
+			category={obj.category}
+			title={obj.title}
+			price={obj.price}
+			image={obj.imageUrl}
+			sizes={obj.sizes}
+			activeSize={obj.activeSize}
+			types={obj.types}
+			activeType={obj.activeType}
+			rating={obj.rating}
+		/>
+	));
+	const skeletons = [...new Array(12)].map((_, index) => <Skeleton key={index} />);
 
 	return (
 		<>
@@ -130,11 +125,11 @@ const Home: React.FC = () => {
 					<Categories value={categoryId} onChangeCategory={onChangeCategory} />
 					<Sort value={sort} />
 				</div>
-				<h2 className="content__title">Всі піци</h2>
+				<h2 className="content__title">{t("All pizzas")}</h2>
 				{status === "error" ? (
 					<div className="content__error-info">
-						<h2>Помилка</h2>
-						<p>Неможливо відобразити товари. Спробуйте пізніше.</p>
+						<h2>{t("Error")}</h2>
+						<p>{t("Unable to display products. Please try again later")}</p>
 					</div>
 				) : (
 					<div className="content__items">{status === "loading" ? skeletons : pizzas}</div>

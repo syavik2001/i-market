@@ -1,7 +1,7 @@
-@import './variables';
-@import './libs/normalize';
+@import "./variables";
+@import "./libs/normalize";
 
-@import './components/all';
+@import "./components/all";
 
 body {
 	background-color: $background;
@@ -369,6 +369,39 @@ body {
 			margin: 0 auto;
 			font-weight: 600;
 			font-size: 18px;
+		}
+	}
+}
+.header {
+	.button-lng {
+		display: inline-block;
+		//background-color: $orange;
+		border-radius: 5px;
+		margin-right: 5px;
+		padding: 10px;
+		min-width: 30px;
+		text-align: center;
+		cursor: pointer;
+		transition: background-color $duration ease-in-out, border-color $duration ease-in-out;
+		border: 1px solid transparent;
+		@include noselect();
+
+		&,
+		span {
+			color: $black;
+		}
+
+		&:hover {
+			background-color: darken($background, 8%);
+		}
+
+		&:active {
+			background-color: darken($background, 12%);
+			transform: translateY(1px);
+		}
+		&.active {
+			background-color: $orange;
+			color: #fff;
 		}
 	}
 }

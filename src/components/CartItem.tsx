@@ -1,7 +1,8 @@
-import React from 'react';
-import clsx from 'clsx';
-import {useDispatch} from 'react-redux';
-import {CartItem, addItem, minusItem, removeItem} from '../redux/slices/cartSlice';
+import React from "react";
+import clsx from "clsx";
+import {useDispatch} from "react-redux";
+import {CartItem, addItem, minusItem, removeItem} from "../redux/slices/cartSlice";
+import {useTranslation} from "react-i18next";
 
 type CartItemProps = {
 	id: string;
@@ -16,6 +17,8 @@ type CartItemProps = {
 const CartItemBlock: React.FC<CartItemProps> = ({id, title, price, count, size, image, type}) => {
 	const dispatch = useDispatch();
 
+	const {t} = useTranslation();
+
 	const onClickPlus = () => {
 		dispatch(addItem({id, size, type} as CartItem));
 	};
@@ -24,8 +27,8 @@ const CartItemBlock: React.FC<CartItemProps> = ({id, title, price, count, size, 
 		dispatch(minusItem({id, size, type} as CartItem));
 	};
 
-	const onClickRemove = () => {
-		if (window.confirm('Ви дійсно хочете видалити товар?')) {
+	const onClickRemove = (removePosition: string) => {
+		if (window.confirm(removePosition)) {
 			dispatch(removeItem({id, size, type} as CartItem));
 		}
 	};
@@ -36,17 +39,17 @@ const CartItemBlock: React.FC<CartItemProps> = ({id, title, price, count, size, 
 				<img className="pizza-block__image" src={image} alt="Pizza" />
 			</div>
 			<div className="cart__item-info">
-				<h3>{title}</h3>
+				<h3>{t(title)}</h3>
 				<p>
-					{type}, {size} см.
+					{t(type)}, {size} {t("sm")}.
 				</p>
 			</div>
 			<div className="cart__item-count">
 				<button
 					disabled={count === 1}
 					onClick={onClickMinus}
-					className={clsx('button button--outline button--circle cart__item-count-minus', {
-						'cart__item-count-minus--disabled': count === 1,
+					className={clsx("button button--outline button--circle cart__item-count-minus", {
+						"cart__item-count-minus--disabled": count === 1,
 					})}>
 					<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path
@@ -70,9 +73,13 @@ const CartItemBlock: React.FC<CartItemProps> = ({id, title, price, count, size, 
 				</button>
 			</div>
 			<div className="cart__item-price">
-				<b>{price * count} грн</b>
+				<b>
+					{price * count} {t("uah")}
+				</b>
 			</div>
-			<div onClick={onClickRemove} className="cart__item-remove">
+			<div
+				onClick={() => onClickRemove(t("Do you realy want to remove this item"))}
+				className="cart__item-remove">
 				<div className="button button--outline button--circle">
 					<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path

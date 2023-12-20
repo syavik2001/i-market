@@ -3,6 +3,7 @@ import {useSelector, useDispatch} from "react-redux";
 import {Sort, SortPropertyEnum, setSort} from "../redux/slices/filterSlice";
 import {type} from "os";
 import {RootState} from "../redux/store";
+import {useTranslation} from "react-i18next";
 
 type SortItem = {
 	name: string;
@@ -18,14 +19,15 @@ type SortPopupProps = {
 };
 
 export const sortList: SortItem[] = [
-	{name: "популярністю (DESC)", sortProperty: SortPropertyEnum.RATING_DESC},
-	{name: "популярністю (ASC)", sortProperty: SortPropertyEnum.RATING_ASC},
-	{name: "за зменшенням ціни (DESC)", sortProperty: SortPropertyEnum.PRICE_DESC},
-	{name: "за збільшенням ціни (ASC)", sortProperty: SortPropertyEnum.PRICE_ASC},
-	{name: "найменуванням", sortProperty: SortPropertyEnum.TITLE_ASC},
+	{name: "rating (DESC)", sortProperty: SortPropertyEnum.RATING_DESC},
+	{name: "rating (ASC)", sortProperty: SortPropertyEnum.RATING_ASC},
+	{name: "price (DESC)", sortProperty: SortPropertyEnum.PRICE_DESC},
+	{name: "price (ASC)", sortProperty: SortPropertyEnum.PRICE_ASC},
+	{name: "by name", sortProperty: SortPropertyEnum.TITLE_ASC},
 ];
 
 const SortPopup: React.FC<SortPopupProps> = React.memo(({value}) => {
+	const {t} = useTranslation();
 	const dispatch = useDispatch();
 	const sort = useSelector((state: RootState) => state.filter.sort);
 	const sortRef = useRef<HTMLDivElement>(null);
@@ -59,8 +61,8 @@ const SortPopup: React.FC<SortPopupProps> = React.memo(({value}) => {
 						fill="#2C2C2C"
 					/>
 				</svg>
-				<b>Сортування за:</b>
-				<span onClick={() => setIsVisible(!isVisible)}>{sort.name}</span>
+				<b>{t("Sort by")}:</b>
+				<span onClick={() => setIsVisible(!isVisible)}>{t(`${sort.name}`)}</span>
 			</div>
 			{isVisible && (
 				<div className="sort__popup">
@@ -70,7 +72,7 @@ const SortPopup: React.FC<SortPopupProps> = React.memo(({value}) => {
 								key={i}
 								onClick={() => onClickListItem(obj)}
 								className={value === obj.sortProperty ? "active" : ""}>
-								{obj.name}{" "}
+								{t(`${obj.name}`)}{" "}
 							</li>
 						))}
 					</ul>

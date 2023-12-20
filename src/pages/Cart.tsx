@@ -1,19 +1,21 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
-import {useSelector, useDispatch} from 'react-redux';
-import CartItem from '../components/CartItem';
-import {clearItem} from '../redux/slices/cartSlice';
-import CartEmpty from '../components/CartEmpty';
-import {RootState} from '../redux/store';
+import React from "react";
+import {Link} from "react-router-dom";
+import {useSelector, useDispatch} from "react-redux";
+import CartItem from "../components/CartItem";
+import {clearItem} from "../redux/slices/cartSlice";
+import CartEmpty from "../components/CartEmpty";
+import {RootState} from "../redux/store";
+import {useTranslation} from "react-i18next";
 
 const Cart = () => {
+	const {t} = useTranslation();
 	const dispatch = useDispatch();
 	const {totalPrice, items} = useSelector((state: RootState) => state.cart);
 
 	const totalCount = items.reduce((sum: number, item: any) => sum + item.count, 0);
 
-	const onClickClear = () => {
-		if (window.confirm('Do you want remove all goods?')) {
+	const onClickClear = (removeAllGoods: string) => {
+		if (window.confirm(removeAllGoods)) {
 			dispatch(clearItem());
 		}
 	};
@@ -47,9 +49,9 @@ const Cart = () => {
 								strokeLinecap="round"
 								stroke-linejoin="round"></path>
 						</svg>
-						Кошик
+						{t("Cart")}
 					</h2>
-					<div onClick={onClickClear} className="cart__clear">
+					<div onClick={() => onClickClear(t("Do you want remove all goods?"))} className="cart__clear">
 						<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path
 								d="M2.5 5H4.16667H17.5"
@@ -77,7 +79,7 @@ const Cart = () => {
 								stroke-linejoin="round"></path>
 						</svg>
 
-						<span>Очистити кошик</span>
+						<span>{t("Empty the cart")}</span>
 					</div>
 				</div>
 				<div className="content__items">
@@ -88,12 +90,15 @@ const Cart = () => {
 				<div className="cart__bottom">
 					<div className="cart__bottom-details">
 						<span>
-							{' '}
-							Усього товарів: <b>{totalCount}</b>{' '}
+							{" "}
+							{t("Total items")}: <b>{totalCount}</b>{" "}
 						</span>
 						<span>
-							{' '}
-							Сума замовлення: <b>{totalPrice} грн</b>{' '}
+							{" "}
+							{t("Order total")}:{" "}
+							<b>
+								{totalPrice} {t("uah")}
+							</b>{" "}
 						</span>
 					</div>
 					<div className="cart__bottom-buttons">
@@ -107,10 +112,10 @@ const Cart = () => {
 									stroke-linejoin="round"></path>
 							</svg>
 
-							<span>Повернутися назад</span>
+							<span>{t("Go back")}</span>
 						</Link>
 						<div className="button pay-btn">
-							<span>Сплатити зараз</span>
+							<span>{t("Pay now")}</span>
 						</div>
 					</div>
 				</div>

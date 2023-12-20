@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import {useTranslation} from "react-i18next";
 
 type CategoriesProps = {
 	value: number;
@@ -6,14 +7,15 @@ type CategoriesProps = {
 };
 
 const Categories: React.FC<CategoriesProps> = React.memo(({value, onChangeCategory}) => {
-	const categories = ["Всі", "М'ясні", "Вегетаріанська", "Гриль", "Гострі", "Закриті"];
+	const {t} = useTranslation();
+	const categories = ["All", "Meat", "Vegetarian", "Grill", "Spicy", "Exquisite"];
 
 	return (
 		<div className="categories">
 			<ul>
 				{categories.map((categoryName, i) => (
 					<li key={i} onClick={() => onChangeCategory(i)} className={value === i ? "active" : ""}>
-						{categoryName}
+						{t(`${categoryName}`)}
 					</li>
 				))}
 			</ul>

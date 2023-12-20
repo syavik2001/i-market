@@ -1,12 +1,13 @@
-import {useState, useEffect} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
-import {CartItem, addItem} from '../../redux/slices/cartSlice';
-import {Link} from 'react-router-dom';
-import {RootState} from '../../redux/store';
-import {setItemType, setItemSize} from '../../redux/slices/pizzaSlice';
-import {getCartItem} from '../../redux/selectors';
+import {useState, useEffect} from "react";
+import {useSelector, useDispatch} from "react-redux";
+import {CartItem, addItem} from "../../redux/slices/cartSlice";
+import {Link} from "react-router-dom";
+import {RootState} from "../../redux/store";
+import {setItemType, setItemSize} from "../../redux/slices/pizzaSlice";
+import {getCartItem} from "../../redux/selectors";
+import {useTranslation} from "react-i18next";
 
-const typeNames = ['тонка', 'традиційна'];
+const typeNames = ["slim", "traditional"];
 
 type PizzaBlockProps = {
 	id: string;
@@ -33,7 +34,7 @@ const PizzaBlock: React.FC<PizzaBlockProps> = ({
 	// rating,
 }) => {
 	const dispatch = useDispatch();
-
+	const {t} = useTranslation();
 	const cartItem = useSelector(getCartItem(id, typeNames[activeType], activeSize));
 
 	const addedCount = cartItem ? cartItem.count : 0;
@@ -64,7 +65,7 @@ const PizzaBlock: React.FC<PizzaBlockProps> = ({
 			<div className="pizza-block">
 				<Link key={id} to={`/i-market/pizza/${id}`}>
 					<img className="pizza-block__image" src={image} alt="Pizza" />
-					<h4 className="pizza-block__title">{title}</h4>
+					<h4 className="pizza-block__title">{t(title)}</h4>
 				</Link>
 				<div className="pizza-block__selector">
 					<ul>
@@ -72,8 +73,8 @@ const PizzaBlock: React.FC<PizzaBlockProps> = ({
 							<li
 								key={type}
 								onClick={() => onClickChangeType(i)}
-								className={activeType === i ? 'active' : ''}>
-								{typeNames[type]}{' '}
+								className={activeType === i ? "active" : ""}>
+								{t(typeNames[type])}{" "}
 							</li>
 						))}
 					</ul>
@@ -82,14 +83,17 @@ const PizzaBlock: React.FC<PizzaBlockProps> = ({
 							<li
 								key={size}
 								onClick={() => onClickChangeSize(size)}
-								className={activeSize === size ? 'active' : ''}>
-								{size} см.
+								className={activeSize === size ? "active" : ""}>
+								{size} {t("sm")}.
 							</li>
 						))}
 					</ul>
 				</div>
 				<div className="pizza-block__bottom">
-					<div className="pizza-block__price"> {price} грн</div>
+					<div className="pizza-block__price">
+						{" "}
+						{price} {t("uah")}
+					</div>
 					<button onClick={onClickAddToCart} className="button button--outline button--add">
 						<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path
@@ -97,7 +101,7 @@ const PizzaBlock: React.FC<PizzaBlockProps> = ({
 								fill="white"
 							/>
 						</svg>
-						<span>Додати</span>
+						<span>{t("Add")}</span>
 						{addedCount > 0 && <i>{addedCount}</i>}
 					</button>
 				</div>

@@ -4,12 +4,18 @@ import Search from "./Search";
 import {useSelector} from "react-redux";
 import {RootState} from "../redux/store";
 import {useEffect, useRef} from "react";
+import {useTranslation} from "react-i18next";
 
 function Header() {
 	const {items, totalPrice} = useSelector((state: RootState) => state.cart);
 	const location = useLocation();
 	const totalCount = items.reduce((sum: number, item: any) => sum + item.count, 0);
 	const isMounted = useRef(false);
+	const {t, i18n} = useTranslation();
+
+	const changeLanguage = (language: string) => {
+		i18n.changeLanguage(language);
+	};
 
 	useEffect(() => {
 		if (isMounted.current) {
@@ -26,16 +32,32 @@ function Header() {
 					<div className="header__logo">
 						<img width="38" src={logoSvg} alt="Pizza logo" />
 						<div>
-							<h1>Реактивна Піца</h1>
-							<p>найсмачніша піца в світі</p>
+							<h1>{t("React Pizza")}</h1>
+							<p>{t("the tastiest pizza in the world")}</p>
 						</div>
 					</div>
 				</Link>
 				{location.pathname !== "/i-market/cart" && <Search />}
+				{location.pathname !== "/i-market/cart" && (
+					<div>
+						<button
+							className={`button-lng ${i18n.language === "ua" ? "active" : "en"}`}
+							onClick={() => changeLanguage("ua")}>
+							UA
+						</button>
+						<button
+							className={`button-lng ${i18n.language === "en" ? "active" : "ua"}`}
+							onClick={() => changeLanguage("en")}>
+							EN
+						</button>
+					</div>
+				)}
 				<div className="header__cart">
 					{location.pathname !== "/i-market/cart" && (
 						<Link to="/i-market/cart" className="button button--cart">
-							<span>{totalPrice} грн</span>
+							<span>
+								{totalPrice} {t("uah")}
+							</span>
 							<div className="button__delimiter"></div>
 							<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path

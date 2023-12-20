@@ -1,15 +1,15 @@
 import React, {useRef, useContext, useCallback, useState} from "react";
 import debounce from "lodash.debounce";
-
 import styles from "./Search.module.scss";
-
 import {useDispatch} from "react-redux";
 import {setSearchValue} from "../../redux/slices/filterSlice";
+import {useTranslation} from "react-i18next";
 
 const Search = () => {
 	const dispatch = useDispatch();
 	const [value, setValue] = useState("");
 	const inputRef = useRef<HTMLInputElement>(null);
+	const {t} = useTranslation();
 
 	const updateSearchValue = useCallback(
 		debounce((str) => {
@@ -19,8 +19,9 @@ const Search = () => {
 	);
 
 	const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-		setValue(event.target.value);
-		updateSearchValue(event.target.value);
+		const inputValue: string = event.target.value;
+		setValue(inputValue);
+		updateSearchValue(inputValue);
 	};
 
 	const onClickClear = () => {
@@ -45,7 +46,9 @@ const Search = () => {
 				value={value}
 				onChange={onChangeInput}
 				className={styles.input}
-				placeholder="Пошук піци..."
+				placeholder={t("Search pizza...")}
+				//acceptCharset ="UTF-8"
+				inputMode="search"
 			/>
 			{value && (
 				<svg

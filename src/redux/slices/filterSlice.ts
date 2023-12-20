@@ -1,4 +1,5 @@
 import {PayloadAction, createSlice} from "@reduxjs/toolkit";
+import {useTranslation} from "react-i18next";
 
 export enum SortPropertyEnum {
 	RATING_DESC = "rating",
@@ -25,7 +26,7 @@ const initialState: FilterSliceState = {
 	categoryId: 0,
 	currentPage: 1,
 	sort: {
-		name: "популярністю",
+		name: "rating",
 		sortProperty: SortPropertyEnum.RATING_DESC,
 	},
 };
@@ -59,7 +60,7 @@ export const filterSlice = createSlice({
 				state.currentPage = 1;
 				state.categoryId = 0;
 				state.sort = {
-					name: "популярністю",
+					name: "rating",
 					sortProperty: SortPropertyEnum.RATING_DESC,
 				};
 			}
