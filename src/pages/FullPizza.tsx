@@ -33,7 +33,7 @@ const FullPizza = () => {
 
 	return (
 		<div className="container">
-			<img src={pizza.imageUrl} />
+			<img className="container--img" src={pizza.imageUrl} />
 			<h2>{t(pizza.title)}</h2>
 			<p> Тут повинен бути опис......</p>
 			<h4>

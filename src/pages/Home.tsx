@@ -1,6 +1,6 @@
-import React, {useContext, useState, useEffect, useRef, useCallback} from "react";
+import React, {useContext, useState, useEffect, useRef, useCallback, useMemo} from "react";
 import qs from "qs";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams, useLocation} from "react-router-dom";
 import {useSelector, useDispatch} from "react-redux";
 import {setCategoryId, setCurrentPage, setFilters} from "../redux/slices/filterSlice";
 import {useTranslation} from "react-i18next";
@@ -15,13 +15,15 @@ import {RootState, useAppDispatch} from "../redux/store";
 const Home: React.FC = () => {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
+	const params = useParams<{categoryId?: string}>(); // Извлекаем параметры из URL
+	const location = useLocation();
 	const isMounted = useRef(false);
 	const categoryId = useSelector((state: RootState) => state.filter.categoryId);
 	const sort = useSelector((state: RootState) => state.filter.sort.sortProperty);
 	const currentPage = useSelector((state: RootState) => state.filter.currentPage);
 	const searchValue = useSelector((state: RootState) => state.filter.searchValue);
 	const {items, status} = useSelector((state: RootState) => state.pizza);
-	const {t} = useTranslation();
+	const {t, i18n} = useTranslation();
 
 	const onChangeCategory = useCallback((idx: number) => {
 		dispatch(setCategoryId(idx));
@@ -31,11 +33,15 @@ const Home: React.FC = () => {
 		dispatch(setCurrentPage(page));
 	};
 
-	const getPizzas = async () => {
+	const getPizzas = useCallback(async () => {
 		const order = sort.includes("-") ? "asc" : "desc";
 		const sortBy = sort.replace("-", "");
 		const category = categoryId > 0 ? `category=${categoryId}` : "";
-		const search = searchValue ? `title=${searchValue}` : "";
+		const search = searchValue
+			? i18n.language === "en"
+				? `title=${searchValue}`
+				: `titleUkr=${searchValue}`
+			: "";
 
 		dispatch(
 			fetchPizzas({
@@ -47,66 +53,78 @@ const Home: React.FC = () => {
 			}),
 		);
 		window.scrollTo(0, 0);
-	};
+	}, [dispatch, sort, categoryId, searchValue, currentPage, i18n.language]);
 
 	useEffect(() => {
-		if (isMounted.current) {
-			const params = {
-				categoryId: categoryId > 0 ? categoryId : null,
-				sortProperty: sort,
-				currentPage,
-			};
-			const queryString = qs.stringify(params, {skipNulls: true});
+		const handlePopstate = (event: PopStateEvent) => {
+			// Обработчик изменения истории браузера
+			const newUrl = new URL(window.location.href);
+			const newCategoryId = newUrl.searchParams.get("categoryId");
+			const newSort = newUrl.searchParams.get("sortProperty");
+			const newPage = newUrl.searchParams.get("currentPage");
+
+			// Обновляем состояние в соответствии с новым URL
+			dispatch(
+				setFilters({
+					searchValue,
+					categoryId: newCategoryId ? Number(newCategoryId) : 0,
+					currentPage: newPage ? Number(newPage) : 1,
+					sort: sortList.find((obj) => obj.sortProperty === newSort) || sortList[0],
+				}),
+			);
+
+			// Поднимаем страницу вверх
+			setTimeout(() => {
+				window.scrollTo(0, 0);
+			}, 0);
+		};
+
+		window.addEventListener("popstate", handlePopstate);
+
+		return () => {
+			window.removeEventListener("popstate", handlePopstate);
+		};
+	}, []);
+
+	useEffect(() => {
+		//if (isMounted.current) {
+		//	isMounted.current = true;
+		//	return;
+		//}
+
+		const newCategoryId = categoryId !== null && !isNaN(categoryId) ? categoryId.toString() : "0";
+		const newCurrentPage = !isNaN(currentPage) ? currentPage.toString() : "1";
+
+		const params = new URLSearchParams();
+		if (newCategoryId !== "") {
+			params.set("categoryId", newCategoryId);
+		}
+		params.set("sortProperty", sort);
+		params.set("currentPage", newCurrentPage);
+
+		const queryString = params.toString();
+		if (window.location.search !== `?${queryString}`) {
 			navigate(`/i-market/?${queryString}`);
 		}
 
-		// 15.07
-		//const params = (qs.parse(window.location.search.substring(1)) as unknown) as SearchPizzaParams;
-		//const sortObj = sortList.find((obj) => obj.sortProperty === params.sortBy);
-		//dispatch(
-		//	setFilters({
-		//		searchValue: params.search,
-		//		categoryId: Number(params.category),
-		//		currentPage: Number(params.currentPage),
-		//		sort: sortObj || sortList[0],
-		//	}),
-		//);
-		// 15.07
+		dispatch(
+			setFilters({
+				searchValue,
+				categoryId: Number(newCategoryId),
+				currentPage: Number(newCurrentPage),
+				sort: sortList.find((obj) => obj.sortProperty === sort) || sortList[0],
+			}),
+		);
 
 		getPizzas();
-		isMounted.current = true;
 	}, [categoryId, sort, searchValue, currentPage]);
-
-	useEffect(() => {
-		if (window.location.search) {
-			const params = (qs.parse(window.location.search.substring(1)) as unknown) as SearchPizzaParams;
-			const sort = sortList.find((obj) => obj.sortProperty === params.sortBy);
-			dispatch(
-				setFilters({
-					searchValue: params.search,
-					categoryId: Number(params.category),
-					currentPage: Number(params.currentPage),
-					sort: sort || sortList[0],
-				}),
-			);
-		}
-		isMounted.current = true;
-	}, []);
-
-	//fetch(
-	//  `https://645aa6b495624ceb21082f35.mockapi.io/items?page=${currentPage}&limit=4&${search}&${category}&sortBy=${sortBy}&order=${order}`)
-	//  .then((res) => res.json())
-	//  .then((arr) => {
-	//    setItems(arr);
-	//    setIsLoading(false)
-	//  }); -----Получение данных с бэка через Фетч
 
 	const pizzas = items.map((obj: any) => (
 		<PizzaBlock
 			key={obj.id}
 			id={obj.id}
 			category={obj.category}
-			title={obj.title}
+			title={i18n.language === "en" ? obj.title : obj.titleUkr}
 			price={obj.price}
 			image={obj.imageUrl}
 			sizes={obj.sizes}

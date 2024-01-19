@@ -1,5 +1,4 @@
 import {PayloadAction, createSlice} from "@reduxjs/toolkit";
-import {useTranslation} from "react-i18next";
 
 export enum SortPropertyEnum {
 	RATING_DESC = "rating",

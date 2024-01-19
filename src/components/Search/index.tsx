@@ -1,6 +1,7 @@
 import React, {useRef, useContext, useCallback, useState} from "react";
 import debounce from "lodash.debounce";
 import styles from "./Search.module.scss";
+//import "../../scss/components/_header.scss";
 import {useDispatch} from "react-redux";
 import {setSearchValue} from "../../redux/slices/filterSlice";
 import {useTranslation} from "react-i18next";
@@ -47,7 +48,6 @@ const Search = () => {
 				onChange={onChangeInput}
 				className={styles.input}
 				placeholder={t("Search pizza...")}
-				//acceptCharset ="UTF-8"
 				inputMode="search"
 			/>
 			{value && (

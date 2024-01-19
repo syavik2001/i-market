@@ -28,7 +28,7 @@ function Header() {
 	return (
 		<div className="header">
 			<div className="container">
-				<Link to="/i-market/">
+				<Link className="header__logo-main" to="/i-market/">
 					<div className="header__logo">
 						<img width="38" src={logoSvg} alt="Pizza logo" />
 						<div>
@@ -37,9 +37,12 @@ function Header() {
 						</div>
 					</div>
 				</Link>
-				{location.pathname !== "/i-market/cart" && <Search />}
+
+				{location.pathname !== "/i-market/cart" && !location.pathname.includes("/i-market/pizza/") && (
+					<Search />
+				)}
 				{location.pathname !== "/i-market/cart" && (
-					<div>
+					<div className="header__button-lng">
 						<button
 							className={`button-lng ${i18n.language === "ua" ? "active" : "en"}`}
 							onClick={() => changeLanguage("ua")}>
