@@ -1,23 +1,24 @@
 {
   "files": {
-    "main.css": "/i-market/static/css/main.0c37d93f.css",
-    "main.js": "/i-market/static/js/main.62cdbc35.js",
-    "Cart.js": "/i-market/static/js/Cart.29d12e47.chunk.js",
-    "FullPizza.js": "/i-market/static/js/FullPizza.e4b4c807.chunk.js",
+    "main.css": "/i-market/static/css/main.2f06682b.css",
+    "main.js": "/i-market/static/js/main.f5212814.js",
+    "Cart.js": "/i-market/static/js/Cart.356f56f1.chunk.js",
+    "FullPizza.js": "/i-market/static/js/FullPizza.7825dc01.chunk.js",
     "NotFound.css": "/i-market/static/css/NotFound.4781e98b.chunk.css",
-    "NotFound.js": "/i-market/static/js/NotFound.5c6e2f2a.chunk.js",
-    "static/media/empty-cart.png": "/i-market/static/media/empty-cart.db905d1f4b063162f25b.png",
+    "NotFound.js": "/i-market/static/js/NotFound.a66a9ed5.chunk.js",
+    "static/media/empty-cart2.png": "/i-market/static/media/empty-cart2.5b273fcbddea2bec6099.png",
     "static/media/pizza-logo.svg": "/i-market/static/media/pizza-logo.56ac87032d8f6fdf863326acd06c0d97.svg",
     "index.html": "/i-market/index.html",
-    "main.0c37d93f.css.map": "/i-market/static/css/main.0c37d93f.css.map",
-    "main.62cdbc35.js.map": "/i-market/static/js/main.62cdbc35.js.map",
-    "Cart.29d12e47.chunk.js.map": "/i-market/static/js/Cart.29d12e47.chunk.js.map",
-    "FullPizza.e4b4c807.chunk.js.map": "/i-market/static/js/FullPizza.e4b4c807.chunk.js.map",
+    "static/media/getFetch.cjs": "/i-market/static/media/getFetch.40f37ddea2378391108f.cjs",
+    "main.2f06682b.css.map": "/i-market/static/css/main.2f06682b.css.map",
+    "main.f5212814.js.map": "/i-market/static/js/main.f5212814.js.map",
+    "Cart.356f56f1.chunk.js.map": "/i-market/static/js/Cart.356f56f1.chunk.js.map",
+    "FullPizza.7825dc01.chunk.js.map": "/i-market/static/js/FullPizza.7825dc01.chunk.js.map",
     "NotFound.4781e98b.chunk.css.map": "/i-market/static/css/NotFound.4781e98b.chunk.css.map",
-    "NotFound.5c6e2f2a.chunk.js.map": "/i-market/static/js/NotFound.5c6e2f2a.chunk.js.map"
+    "NotFound.a66a9ed5.chunk.js.map": "/i-market/static/js/NotFound.a66a9ed5.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0c37d93f.css",
-    "static/js/main.62cdbc35.js"
+    "static/css/main.2f06682b.css",
+    "static/js/main.f5212814.js"
   ]
 }
