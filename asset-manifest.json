@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/i-market/static/css/main.2f06682b.css",
-    "main.js": "/i-market/static/js/main.f5212814.js",
+    "main.js": "/i-market/static/js/main.4ddbe8c6.js",
     "Cart.js": "/i-market/static/js/Cart.356f56f1.chunk.js",
     "FullPizza.js": "/i-market/static/js/FullPizza.7825dc01.chunk.js",
     "NotFound.css": "/i-market/static/css/NotFound.4781e98b.chunk.css",
@@ -11,7 +11,7 @@
     "index.html": "/i-market/index.html",
     "static/media/getFetch.cjs": "/i-market/static/media/getFetch.40f37ddea2378391108f.cjs",
     "main.2f06682b.css.map": "/i-market/static/css/main.2f06682b.css.map",
-    "main.f5212814.js.map": "/i-market/static/js/main.f5212814.js.map",
+    "main.4ddbe8c6.js.map": "/i-market/static/js/main.4ddbe8c6.js.map",
     "Cart.356f56f1.chunk.js.map": "/i-market/static/js/Cart.356f56f1.chunk.js.map",
     "FullPizza.7825dc01.chunk.js.map": "/i-market/static/js/FullPizza.7825dc01.chunk.js.map",
     "NotFound.4781e98b.chunk.css.map": "/i-market/static/css/NotFound.4781e98b.chunk.css.map",
@@ -19,6 +19,6 @@
   },
   "entrypoints": [
     "static/css/main.2f06682b.css",
-    "static/js/main.f5212814.js"
+    "static/js/main.4ddbe8c6.js"
   ]
 }
