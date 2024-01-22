@@ -16,10 +16,10 @@ i18n
     interpolation: {
       escapeValue: false,
     },
-    detection: {
-      order: ['querystring', 'cookie', 'localStorage', 'navigator', 'htmlTag', 'path', 'subdomain'],
-      caches: ['cookie'],
-    },
+    //detection: {
+    //  order: ['querystring', 'cookie', 'localStorage', 'navigator', 'htmlTag', 'path', 'subdomain'],
+    //  caches: ['cookie'],
+    //},
   });
 
 export default i18n;
