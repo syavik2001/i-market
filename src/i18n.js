@@ -18,7 +18,7 @@ i18n
     },
     detection: {
       order: ['querystring', 'cookie', 'localStorage', 'navigator', 'htmlTag', 'path', 'subdomain'],
-      //caches: ['cookie'],
+      caches: ['cookie'],
     },
   });
 
